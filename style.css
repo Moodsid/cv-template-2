@@ -1,102 +1,3 @@
-/* Language Selector Styles */
-.top-controls {
-    background-color: #333;
-    padding: 10px 0;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 2000;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.theme-selector, .language-selector {
-    padding: 0 20px;
-}
-
-.language-options {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.language-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    background-color: #555;
-    transition: all 0.3s ease;
-}
-
-.language-btn.active {
-    background-color: #4CAF50;
-}
-
-/* Language Display Control */
-.lang-ar {
-    display: none;
-}
-
-body.ar-lang .lang-ar {
-    display: initial;
-}
-
-body.ar-lang .lang-en {
-    display: none;
-}
-
-/* RTL Support */
-body.ar-lang {
-    direction: rtl;
-    text-align: right;
-}
-
-body.ar-lang .contact-item i {
-    margin-right: 0;
-    margin-left: 7px;
-}
-
-body.ar-lang .back-to-top {
-    right: auto;
-    left: 20px;
-}
-
-/* RTL Support for section titles */
-body.ar-lang .theme-1 .section-title::after,
-body.ar-lang .theme-9 .section-title::after,
-body.ar-lang .theme-10 .section-title::after {
-    left: auto;
-    right: 0;
-}
-
-/* For theme 8, swap the positions of before/after elements */
-body.ar-lang .theme-8 .section-title::before {
-    left: auto;
-    right: 0;
-}
-
-body.ar-lang .theme-8 .section-title::after {
-    right: auto;
-    left: 0;
-}
-
-/* For any themes with other positioning elements */
-body.ar-lang .timeline-item::before,
-body.ar-lang .personal-info-item::before,
-body.ar-lang .skill-name::before,
-body.ar-lang .achievement-item::before {
-    left: auto;
-    right: 0;
-}
-
-body.ar-lang .timeline-item,
-body.ar-lang .achievement-item {
-    padding-left: 0;
-    padding-right: 30px;
-}
 /* =================== THEME SELECTOR =================== */
 .theme-selector {
     background-color: #333;
@@ -3964,14 +3865,11 @@ body {
     padding: 0 20px;
 }
 
-body.ar-lang .theme-8 .section-title::before {
-    left: auto;
-    right: 0;
-}
-
-body.ar-lang .theme-8 .section-title::after {
-    right: auto;
-    left: 0;
+.theme-8 .section-title::before,
+.theme-8 .section-title::after {
+    content: "•";
+    position: absolute;
+    color: var(--secondary-color);
 }
 
 .theme-8 .section-title::before {

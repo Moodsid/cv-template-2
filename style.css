@@ -64,6 +64,39 @@ body.ar-lang .back-to-top {
     left: 20px;
 }
 
+/* RTL Support for section titles */
+body.ar-lang .theme-1 .section-title::after,
+body.ar-lang .theme-9 .section-title::after,
+body.ar-lang .theme-10 .section-title::after {
+    left: auto;
+    right: 0;
+}
+
+/* For theme 8, swap the positions of before/after elements */
+body.ar-lang .theme-8 .section-title::before {
+    left: auto;
+    right: 0;
+}
+
+body.ar-lang .theme-8 .section-title::after {
+    right: auto;
+    left: 0;
+}
+
+/* For any themes with other positioning elements */
+body.ar-lang .timeline-item::before,
+body.ar-lang .personal-info-item::before,
+body.ar-lang .skill-name::before,
+body.ar-lang .achievement-item::before {
+    left: auto;
+    right: 0;
+}
+
+body.ar-lang .timeline-item,
+body.ar-lang .achievement-item {
+    padding-left: 0;
+    padding-right: 30px;
+}
 /* =================== THEME SELECTOR =================== */
 .theme-selector {
     background-color: #333;
@@ -3931,11 +3964,14 @@ body {
     padding: 0 20px;
 }
 
-.theme-8 .section-title::before,
-.theme-8 .section-title::after {
-    content: "•";
-    position: absolute;
-    color: var(--secondary-color);
+body.ar-lang .theme-8 .section-title::before {
+    left: auto;
+    right: 0;
+}
+
+body.ar-lang .theme-8 .section-title::after {
+    right: auto;
+    left: 0;
 }
 
 .theme-8 .section-title::before {

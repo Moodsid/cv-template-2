@@ -1,11 +1,14 @@
 // Theme Switcher
 const themeButtons = document.querySelectorAll('.theme-btn');
 const body = document.body;
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeSelector = document.getElementById('themeSelector');
 
 // Set active theme on load
 document.addEventListener('DOMContentLoaded', () => {
     setupTheme();
     setupInteractions();
+    setupThemeToggle();
 });
 
 function setupTheme() {
@@ -20,6 +23,29 @@ function setupTheme() {
         } else {
             button.classList.remove('active');
         }
+    });
+}
+
+function setupThemeToggle() {
+    // Toggle theme selector visibility
+    themeToggleBtn.addEventListener('click', function() {
+        themeSelector.classList.toggle('active');
+        
+        // Change the icon based on visibility
+        const icon = themeToggleBtn.querySelector('i');
+        if (themeSelector.classList.contains('active')) {
+            icon.className = 'fas fa-times';
+        } else {
+            icon.className = 'fas fa-palette';
+        }
+    });
+    
+    // Close theme selector when a theme is selected
+    themeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            themeSelector.classList.remove('active');
+            themeToggleBtn.querySelector('i').className = 'fas fa-palette';
+        });
     });
 }
 
@@ -101,29 +127,6 @@ function setupInteractions() {
             }
         });
     });
-
-    // Form Submission Handler
-    const contactForm = document.getElementById('contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && subject && message) {
-                // In a real application, you would send this data to a server
-                alert('Thank you for your message! I will get back to you soon.');
-                contactForm.reset();
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
-    }
 
     // Add animation to timeline items - if they exist in current theme
     const observerOptions = {

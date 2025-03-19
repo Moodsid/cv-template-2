@@ -8,24 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="theme-1">
-    <!-- Theme Selector -->
+<!--  theme selector -->
+<div class="top-controls">
     <div class="theme-selector">
-        <div class="container">
-            <h3>Choose Theme:</h3>
-            <div class="theme-options">
-                <button class="theme-btn active" data-theme="theme-1">Theme 1</button>
-                <button class="theme-btn" data-theme="theme-2">Theme 2</button>
-                <button class="theme-btn" data-theme="theme-3">Theme 3</button>
-                <button class="theme-btn" data-theme="theme-4">Theme 4</button>
-                <button class="theme-btn" data-theme="theme-5">Theme 5</button>
-                <button class="theme-btn" data-theme="theme-6">Theme 6</button>
-                <button class="theme-btn" data-theme="theme-7">Theme 7</button>
-                <button class="theme-btn" data-theme="theme-8">Theme 8</button>
-                <button class="theme-btn" data-theme="theme-9">Theme 9</button>
-                <button class="theme-btn" data-theme="theme-10">Theme 10</button>
-            </div>
+        <h3>Choose Theme:</h3>
+        <div class="theme-options">
+            <button class="theme-btn active" data-theme="theme-1">Theme 1</button>
+            <button class="theme-btn" data-theme="theme-2">Theme 2</button>
+            <button class="theme-btn" data-theme="theme-3">Theme 3</button>
+            <button class="theme-btn" data-theme="theme-4">Theme 4</button>
+            <button class="theme-btn" data-theme="theme-5">Theme 5</button>
+            <button class="theme-btn" data-theme="theme-6">Theme 6</button>
+            <button class="theme-btn" data-theme="theme-7">Theme 7</button>
+            <button class="theme-btn" data-theme="theme-8">Theme 8</button>
+            <button class="theme-btn" data-theme="theme-9">Theme 9</button>
+            <button class="theme-btn" data-theme="theme-10">Theme 10</button>
         </div>
     </div>
+    
+    <div class="language-selector">
+        <h3>Language:</h3>
+        <div class="language-options">
+            <button class="language-btn active" data-lang="en">English</button>
+            <button class="language-btn" data-lang="ar">العربية</button>
+        </div>
+    </div>
+</div>
 
     <!-- Header -->
     <header id="home">
@@ -58,33 +66,70 @@
     </header>
 
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#languages">Languages</a></li>
-                <li><a href="#references">References</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav>
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="#home">
+                <span class="lang-en">Home</span>
+                <span class="lang-ar">الرئيسية</span>
+            </a></li>
+            <li><a href="#about">
+                <span class="lang-en">About</span>
+                <span class="lang-ar">نبذة عني</span>
+            </a></li>
+            <li><a href="#experience">
+                <span class="lang-en">Experience</span>
+                <span class="lang-ar">الخبرة</span>
+            </a></li>
+            <li><a href="#education">
+                <span class="lang-en">Education</span>
+                <span class="lang-ar">التعليم</span>
+            </a></li>
+            <li><a href="#skills">
+                <span class="lang-en">Skills</span>
+                <span class="lang-ar">المهارات</span>
+            </a></li>
+            <li><a href="#projects">
+                <span class="lang-en">Projects</span>
+                <span class="lang-ar">المشاريع</span>
+            </a></li>
+            <li><a href="#certifications">
+                <span class="lang-en">Certifications</span>
+                <span class="lang-ar">الشهادات</span>
+            </a></li>
+            <li><a href="#achievements">
+                <span class="lang-en">Achievements</span>
+                <span class="lang-ar">الإنجازات</span>
+            </a></li>
+            <li><a href="#languages">
+                <span class="lang-en">Languages</span>
+                <span class="lang-ar">اللغات</span>
+            </a></li>
+            <li><a href="#references">
+                <span class="lang-en">References</span>
+                <span class="lang-ar">المراجع</span>
+            </a></li>
+            <li><a href="#contact">
+                <span class="lang-en">Contact</span>
+                <span class="lang-ar">اتصل بي</span>
+            </a></li>
+        </ul>
+    </div>
+</nav>
 
     <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a passionate web developer with over 5 years of experience in creating responsive, user-friendly websites and applications. My expertise spans across front-end and back-end development, with a strong focus on delivering clean, efficient, and maintainable code.</p>
-                    <p>Throughout my career, I have worked with various clients across different industries, helping them establish a strong online presence and improve their digital user experience. I am constantly learning and exploring new technologies to stay ahead in this ever-evolving field.</p>
-                    <p>When I'm not coding, you can find me hiking, playing chess, or exploring new coffee shops in the city.</p>
+  <section id="about">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="lang-en">About Me</span>
+            <span class="lang-ar">نبذة عني</span>
+        </h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p class="lang-en">I am a passionate web developer with over 5 years of experience in creating responsive, user-friendly websites and applications. My expertise spans across front-end and back-end development, with a strong focus on delivering clean, efficient, and maintainable code.</p>
+                <p class="lang-ar">أنا مطور ويب شغوف بخبرة تزيد عن 5 سنوات في إنشاء مواقع وتطبيقات ويب سهلة الاستخدام ومتجاوبة. تمتد خبرتي عبر تطوير الواجهة الأمامية والخلفية، مع تركيز قوي على تقديم كود نظيف وفعال وقابل للصيانة.</p>
+                
+
                 </div>
                 <div class="personal-info">
                     <h3>Personal Information</h3>

@@ -6,8 +6,34 @@
     position: sticky;
     top: 0;
     z-index: 2000;
+    display: none;
 }
-
+/* When the theme selector is active/visible */
+.theme-selector.active {
+    display: block;
+}
+/* Theme toggle button */
+.theme-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2001;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+}
 .theme-options {
     display: flex;
     flex-wrap: wrap;

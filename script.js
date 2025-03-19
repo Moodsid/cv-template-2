@@ -1,46 +1,21 @@
-// Theme and Language Switchers
+// Theme Switcher
 const themeButtons = document.querySelectorAll('.theme-btn');
-const languageButtons = document.querySelectorAll('.language-btn');
 const body = document.body;
 
-// Set active theme and language on load
+// Set active theme on load
 document.addEventListener('DOMContentLoaded', () => {
     setupTheme();
-    setupLanguage();
     setupInteractions();
 });
 
 function setupTheme() {
     // Default to theme-1 if no theme is stored
     const savedTheme = localStorage.getItem('selectedTheme') || 'theme-1';
-    
-    // Make sure we keep the language class if it exists
-    const currentLang = body.classList.contains('ar-lang') ? 'ar-lang' : '';
-    body.className = `${savedTheme} ${currentLang}`.trim();
+    body.className = savedTheme;
     
     // Update active button
     themeButtons.forEach(button => {
         if (button.dataset.theme === savedTheme) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
-    });
-}
-
-function setupLanguage() {
-    // Default to English if no language is stored
-    const savedLang = localStorage.getItem('selectedLang') || 'en';
-    
-    if (savedLang === 'ar') {
-        body.classList.add('ar-lang');
-    } else {
-        body.classList.remove('ar-lang');
-    }
-    
-    // Update active button
-    languageButtons.forEach(button => {
-        if (button.dataset.lang === savedLang) {
             button.classList.add('active');
         } else {
             button.classList.remove('active');
@@ -54,11 +29,8 @@ function setupInteractions() {
         button.addEventListener('click', () => {
             const selectedTheme = button.dataset.theme;
             
-            // Preserve language class
-            const langClass = body.classList.contains('ar-lang') ? 'ar-lang' : '';
-            
             // Update body class
-            body.className = `${selectedTheme} ${langClass}`.trim();
+            body.className = selectedTheme;
             
             // Save to localStorage
             localStorage.setItem('selectedTheme', selectedTheme);
@@ -74,32 +46,6 @@ function setupInteractions() {
 
             // Update layout for specific themes that need additional adjustments
             handleThemeSpecificLayouts(selectedTheme);
-        });
-    });
-    
-    // Language button click events
-    languageButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const selectedLang = button.dataset.lang;
-            
-            // Update language class
-            if (selectedLang === 'ar') {
-                body.classList.add('ar-lang');
-            } else {
-                body.classList.remove('ar-lang');
-            }
-            
-            // Save to localStorage
-            localStorage.setItem('selectedLang', selectedLang);
-            
-            // Update active button
-            languageButtons.forEach(btn => {
-                if (btn === button) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
         });
     });
 
@@ -142,8 +88,8 @@ function setupInteractions() {
             const target = document.querySelector(this.getAttribute('href'));
             
             if (target) {
-                // Adjusted offset for different themes and controls
-                const themeSelector = document.querySelector('.top-controls');
+                // Adjusted offset for different themes
+                const themeSelector = document.querySelector('.theme-selector');
                 const themeHeight = themeSelector ? themeSelector.offsetHeight : 0;
                 const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
                 const offset = themeHeight + navHeight;
@@ -171,20 +117,10 @@ function setupInteractions() {
             
             if (name && email && subject && message) {
                 // In a real application, you would send this data to a server
-                const isArabic = body.classList.contains('ar-lang');
-                const successMessage = isArabic 
-                    ? 'شكرًا لرسالتك! سأعود إليك قريبًا.' 
-                    : 'Thank you for your message! I will get back to you soon.';
-                
-                alert(successMessage);
+                alert('Thank you for your message! I will get back to you soon.');
                 contactForm.reset();
             } else {
-                const isArabic = body.classList.contains('ar-lang');
-                const errorMessage = isArabic 
-                    ? 'يرجى ملء جميع الحقول.' 
-                    : 'Please fill in all fields.';
-                
-                alert(errorMessage);
+                alert('Please fill in all fields.');
             }
         });
     }
@@ -294,26 +230,6 @@ function handleThemeSpecificLayouts(theme) {
         });
     }
     
-    // For theme 9 (modern grid masonry layout)
-    if (theme === 'theme-9') {
-        // If main element doesn't exist, create it to wrap all sections
-        if (!document.querySelector('main')) {
-            const sections = document.querySelectorAll('section');
-            const mainElement = document.createElement('main');
-            
-            // Get the first section's parent
-            const firstSectionParent = sections[0].parentNode;
-            
-            // Insert main element before the first section
-            firstSectionParent.insertBefore(mainElement, sections[0]);
-            
-            // Move all sections into main
-            sections.forEach(section => {
-                mainElement.appendChild(section);
-            });
-        }
-    }
-    
     // Reset to default structure when switching away from special themes
     if (theme !== 'theme-2') {
         const mainContent = document.querySelector('.main-content');
@@ -335,23 +251,6 @@ function handleThemeSpecificLayouts(theme) {
                 // Remove wrapper elements
                 parent.removeChild(mainContent);
             }
-        }
-    }
-    
-    if (theme !== 'theme-9') {
-        // Check if main exists and has sections
-        const mainElement = document.querySelector('main');
-        if (mainElement && mainElement.querySelectorAll('section').length > 0) {
-            const parent = mainElement.parentNode;
-            
-            // Move all sections back to original position
-            const sections = mainElement.querySelectorAll('section');
-            sections.forEach(section => {
-                parent.insertBefore(section, mainElement);
-            });
-            
-            // Remove main element
-            parent.removeChild(mainElement);
         }
     }
 }

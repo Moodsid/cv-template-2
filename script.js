@@ -1,3 +1,45 @@
+// Theme Switcher
+const themeButtons = document.querySelectorAll('.theme-btn');
+const body = document.body;
+
+// Set active theme on load
+document.addEventListener('DOMContentLoaded', () => {
+    // Default to theme-1 if no theme is stored
+    const savedTheme = localStorage.getItem('selectedTheme') || 'theme-1';
+    body.className = savedTheme;
+    
+    // Update active button
+    themeButtons.forEach(button => {
+        if (button.dataset.theme === savedTheme) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+});
+
+// Theme button click event
+themeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedTheme = button.dataset.theme;
+        
+        // Update body class
+        body.className = selectedTheme;
+        
+        // Save to localStorage
+        localStorage.setItem('selectedTheme', selectedTheme);
+        
+        // Update active button
+        themeButtons.forEach(btn => {
+            if (btn === button) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    });
+});
+
 // Mobile Navigation Toggle
 const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -33,8 +75,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         
         if (target) {
+            // Adjusted offset to account for the theme selector navbar
+            const themeSelector = document.querySelector('.theme-selector');
+            const themeHeight = themeSelector ? themeSelector.offsetHeight : 0;
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const offset = themeHeight + navHeight;
+            
             window.scrollTo({
-                top: target.offsetTop - 70,
+                top: target.offsetTop - offset,
                 behavior: 'smooth'
             });
         }
